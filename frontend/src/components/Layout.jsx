@@ -16,6 +16,9 @@ function Layout({ children }) {
                 <li className="nav-item">
                   <Link className="nav-link" to="/tasks">Tasks</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/create">Create Task</Link>
+                </li>
               </ul>
             </div>
           </div>
