@@ -1,13 +1,13 @@
 import React from 'react';
 import TaskList from './components/TaskList';
+import Layout from './components/Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="container py-4">
-      <h1 className="mb-4">Task Manager</h1>
+    <Layout>
       <TaskList />
-    </div>
+    </Layout>
   );
 }
 
