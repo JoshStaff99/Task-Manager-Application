@@ -18,11 +18,11 @@ logs/*.log
 frontend/dist/
 frontend/node_modules/
 
-# Backend build output (if any)
+# Backend build output
 backend/node_modules/
 backend/dist/
 
-# IDE / Editor folders (optional but recommended)
+# IDE / Editor folders
 .vscode/
 .idea/
 *.suo
@@ -30,7 +30,7 @@ backend/dist/
 *.njsproj
 *.sln
 
-# MacOS system files (optional)
+# MacOS system files
 .DS_Store
 
 # npm cache folder
