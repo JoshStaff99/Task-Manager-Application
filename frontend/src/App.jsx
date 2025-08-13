@@ -6,7 +6,6 @@ import Dashboard from './pages/Dashboard';
 import CreateTask from './pages/CreateTask';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
   return (
     <Router>
@@ -14,7 +13,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="/tasks" element={<Tasks />} />
+          <Route path="tasks" element={<Tasks />} />
           <Route path="create" element={<CreateTask />} />
         </Route>
       </Routes>
