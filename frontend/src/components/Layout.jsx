@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
-function Layout({ children }) {
+function Layout() {
   return (
     <div className="bg-light min-vh-100 min-vw-100">
       <header>
@@ -17,7 +17,7 @@ function Layout({ children }) {
                   <Link className="nav-link" to="/tasks">Tasks</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/create">Create Task</Link>
+                  <Link className="nav-link" to="/create">Create Task</Link>
                 </li>
               </ul>
             </div>
@@ -25,9 +25,8 @@ function Layout({ children }) {
         </nav>
       </header>
 
-
       <main className="px-4 py-4">
-        {children}
+        <Outlet />
       </main>
     </div>
   );

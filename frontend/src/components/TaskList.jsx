@@ -23,8 +23,7 @@ function TaskList() {
   }, [statusFilter]);
 
   return (
-    <div className="container">
-      <h2 className="mb-3">Task List</h2>
+    <div>
       <TaskFilters current={statusFilter} onChange={setStatusFilter} />
       {tasks.length === 0 ? (
         <p>No tasks found.</p>
