@@ -6,12 +6,13 @@ const sequelize = require('./utils/db');
 const Task = require('./models/Task');
 
 const app = express();
-const PORT = 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Routes
 
 // GET /tasks
 app.get('/tasks', async (req, res) => {
@@ -66,10 +67,4 @@ app.delete('/tasks/:id', async (req, res) => {
   res.status(204).send();
 });
 
-// Sync DB and start server
-sequelize.sync().then(() => {
-  console.log('Database synced');
-  app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-  });
-});
+module.exports = app;
