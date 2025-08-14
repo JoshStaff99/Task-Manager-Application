@@ -2,7 +2,7 @@ const app = require('./app');
 const sequelize = require('./utils/db');
 const seedTasks = require('./seedTasks');
 
-const PORT = 5000;
+const PORT = 5001;
 
 sequelize.sync().then(async () => {
   console.log('Database synced');
