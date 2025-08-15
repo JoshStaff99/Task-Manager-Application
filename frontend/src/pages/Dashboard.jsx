@@ -9,7 +9,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/tasks'); // Adjusted to direct API
+        const res = await axios.get('http://localhost:5001/tasks'); 
         setTasks(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         console.error('Failed to fetch tasks:', err);
