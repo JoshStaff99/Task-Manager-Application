@@ -1,13 +1,20 @@
 
 import React from 'react';
 import api from '../api';
+import { useNavigate } from 'react-router-dom';
 
 function TaskItem({ task, refreshTasks }) {
+  const navigate = useNavigate();
+
   const handleDelete = async () => {
     if (confirm('Are you sure you want to delete this task?')) {
       await api.delete(`/tasks/${task.id}`);
       refreshTasks();
     }
+  };
+
+  const handleEdit = () => {
+    navigate(`/tasks/${task.id}/edit`);
   };
 
   return (
@@ -20,9 +27,14 @@ function TaskItem({ task, refreshTasks }) {
           Created: {new Date(task.createdAt).toLocaleString()}
         </small>
       </div>
-      <button className="btn btn-sm btn-danger" onClick={handleDelete}>
-        Delete
-      </button>
+      <div className="ms-auto d-flex gap-2">
+        <button className="btn btn-sm btn-primary" onClick={handleEdit}>
+          Edit
+        </button>
+        <button className="btn btn-sm btn-danger" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

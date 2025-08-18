@@ -4,6 +4,8 @@ import Layout from './components/Layout';
 import Tasks from './pages/Tasks';
 import Dashboard from './pages/Dashboard';
 import CreateTask from './pages/CreateTask';
+import EditTask from './pages/EditTask';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="tasks" element={<Tasks />} />
           <Route path="create" element={<CreateTask />} />
+          <Route path="/tasks/:id/edit" element={<EditTask />} />
         </Route>
       </Routes>
     </Router>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TaskActions from '../components/TaskActions';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -21,6 +23,22 @@ function Dashboard() {
 
     fetchTasks();
   }, []);
+
+  const handleDeleteTask = async (id) => {
+  if (confirm('Are you sure you want to delete this task?')) {
+    try {
+      await axios.delete(`http://localhost:5001/tasks/${id}`);
+      // Refresh tasks after delete
+      setTasks(prev => prev.filter(task => task.id !== id && task._id !== id));
+    } catch (err) {
+      console.error('Failed to delete task:', err);
+    }
+  }
+  };
+
+  const handleEditTask = (id) => {
+    navigate(`/tasks/${id}/edit`);
+  };
 
   const categorizedTasks = {
     pending: tasks.filter(task => task.status === 'pending'),
@@ -39,10 +57,10 @@ function Dashboard() {
               <strong>{task.title}</strong>
               <p className="mb-0 small text-muted">{task.description}</p>
             </div>
-              <TaskActions 
-                onEdit={() => console.log(`Edit task ${task.id}`)}
-                onDelete={() => console.log(`Delete task ${task.id}`)}
-              />
+            <TaskActions 
+              onEdit={() => handleEditTask(task.id || task._id)}
+              onDelete={() => handleDeleteTask(task.id || task._id)}
+            />
           </li>
         ))}
       </ul>
