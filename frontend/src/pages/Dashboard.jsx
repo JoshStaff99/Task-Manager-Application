@@ -40,6 +40,10 @@ function Dashboard() {
     navigate(`/tasks/${id}/edit`);
   };
 
+  const handleViewTask = (id) => {
+    navigate(`/tasks/${id}`);
+  };
+
   const categorizedTasks = {
     pending: tasks.filter(task => task.status === 'pending'),
     inProgress: tasks.filter(task => task.status === 'in-progress'),
@@ -52,15 +56,22 @@ function Dashboard() {
     ) : (
       <ul className="list-group">
         {taskArray.map(task => (
-          <li key={task.id || task._id} className="list-group-item d-flex justify-content-between align-items-center">
+          <li
+            key={task.id || task._id}
+            className="list-group-item"
+          >
             <div>
               <strong>{task.title}</strong>
-              <p className="mb-0 small text-muted">{task.description}</p>
+              <p className="mb-1 small text-muted">{task.description}</p>
             </div>
-            <TaskActions 
-              onEdit={() => handleEditTask(task.id || task._id)}
-              onDelete={() => handleDeleteTask(task.id || task._id)}
-            />
+
+            <div className="mt-2">
+              <TaskActions 
+                onView={() => handleViewTask(task.id || task._id)}
+                onEdit={() => handleEditTask(task.id || task._id)}
+                onDelete={() => handleDeleteTask(task.id || task._id)}
+              />
+            </div>
           </li>
         ))}
       </ul>

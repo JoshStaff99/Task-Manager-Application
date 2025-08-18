@@ -1,10 +1,16 @@
 import React from 'react';
 
-function TaskActions({ onEdit, onDelete }) {
+function TaskActions({ onView, onEdit, onDelete }) {
   return (
-    <div className="d-flex">
+    <div className="d-flex justify-content-center gap-2">
       <button 
-        className="btn btn-sm btn-outline-primary me-2"
+        className="btn btn-sm btn-outline-secondary"
+        onClick={onView}
+      >
+        View
+      </button>
+      <button 
+        className="btn btn-sm btn-outline-primary"
         onClick={onEdit}
       >
         Edit

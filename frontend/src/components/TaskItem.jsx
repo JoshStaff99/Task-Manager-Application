@@ -1,4 +1,3 @@
-
 import React from 'react';
 import api from '../api';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +16,10 @@ function TaskItem({ task, refreshTasks }) {
     navigate(`/tasks/${task.id}/edit`);
   };
 
+  const handleView = () => {
+    navigate(`/tasks/${task.id}`);
+  };
+
   return (
     <div className="list-group-item d-flex justify-content-between align-items-center">
       <div>
@@ -28,6 +31,9 @@ function TaskItem({ task, refreshTasks }) {
         </small>
       </div>
       <div className="ms-auto d-flex gap-2">
+        <button className="btn btn-sm btn-secondary" onClick={handleView}>
+          View
+        </button>
         <button className="btn btn-sm btn-primary" onClick={handleEdit}>
           Edit
         </button>
