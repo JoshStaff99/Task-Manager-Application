@@ -1,9 +1,12 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
 import api from '../api';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../context/ThemeContext.js';
 
 function TaskItem({ task, refreshTasks }) {
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
 
   const handleDelete = async () => {
     if (confirm('Are you sure you want to delete this task?')) {
@@ -21,7 +24,7 @@ function TaskItem({ task, refreshTasks }) {
   const handleView = () => navigate(`/tasks/${task.id}`);
 
   return (
-    <div className="list-group-item">
+    <div className={`list-group-item${theme === 'dark' ? ' bg-dark text-light' : ''}`}>
       <div className="d-flex justify-content-between align-items-start flex-wrap">
         <div>
           <h5>{task.title}</h5>

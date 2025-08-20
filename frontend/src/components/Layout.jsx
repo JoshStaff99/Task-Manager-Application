@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { ThemeContext } from '../context/ThemeContext.js';
 
 function Layout() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <div className="bg-light min-vh-100 min-vw-100">
+    <div className={theme === 'dark' ? 'bg-dark text-light min-vh-100 min-vw-100' : 'bg-light min-vh-100 min-vw-100'}>
       <header>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary w-100">
           <div className="container-fluid">
@@ -33,6 +35,11 @@ function Layout() {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/create">Create Task</Link>
+                </li>
+                <li className="nav-item">
+                  <button className="btn btn-outline-light ms-3" onClick={toggleTheme}>
+                    {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                  </button>
                 </li>
               </ul>
             </div>

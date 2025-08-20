@@ -30,6 +30,16 @@ body {
   min-height: 100vh;
 }
 
+.darkmode {
+  background-color: #212529 !important;
+  color: #f8f9fa !important;
+}
+
+.darkmode .list-group-item {
+  background-color: #343a40 !important;
+  color: #f8f9fa !important;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
